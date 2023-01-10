@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %} {% endblock %} {% block body %}
+
+<div class="container mt-5">
+  <div class="container">
+    <form action="" class="form-control" method="POST" enctype="multipart/form-data">
+      <div class="row p-4">
+        <div class="col">
+          <span class=""> Image Name: </span>
+          <input type="text" name="image_name" class="form-control mt-3" />
+        </div>
+        <div class="col">
+          <span>Upload File</span><input type="file" name="image" class="form-control mt-3" />
+        </div>
+      </div>
+
+      <div class="text-center mt-5 mb-5">
+        <input type="submit" class="btn btn-primary text-center" />
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

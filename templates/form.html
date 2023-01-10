@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block title %}
+<title>Add Password - Password Manager</title>
+
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col">
+      <div class="card mt-5 p-3">
+        <div class="card-body">
+          <div class="text-center">
+            <p class="display-6">Add New Password</p>
+          </div>
+
+          <form action="" class="" method="POST">
+            <div class="container">
+              <div class="container mt-5">
+                <p>Inpur Site Name</p>
+                <input
+                  type="text"
+                  name="description"
+                  placeholder="Input the site name"
+                  class="form-control"
+                />
+              </div>
+              <div class="container mt-5">
+                <p>Input Username</p>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Input username"
+                  class="form-control"
+                  required
+                />
+              </div>
+              {% if password_add %}
+              <div class="container mt-5">
+                <p>Input password</p>
+                <input
+                  type="text"
+                  name="password"
+                  placeholder="Input password"
+                  class="form-control"
+                  value="{{password_add}}"
+                  required
+                />
+              </div>
+              {% else %}
+              <div class="container mt-5">
+                <p>Input password</p>
+                <input
+                  type="text"
+                  name="password"
+                  placeholder="Input password"
+                  class="form-control"
+                  value=""
+                  required
+                />
+              </div>
+              {% endif %}
+
+              <div class="mt-5 mb-5 text-center">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+{% endblock %}

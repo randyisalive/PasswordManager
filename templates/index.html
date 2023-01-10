@@ -1,0 +1,127 @@
+{% extends 'base.html' %} {% block title %}
+<title>Password Manager</title>
+
+
+
+{% endblock %} {% block body %}
+{% include 'navbar.html'   %}
+
+
+
+<div class="container mt-4 card p-5 border">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        
+        <table class="table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Site/Description</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th colspan="2" style="text-align: ce;">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="parentDiv">
+        {% for x in content %}
+        <td>{{num_list[0]}}</td>
+        {% if num_list.append(num_list.pop() + 1) %}
+          
+        {% endif %}
+
+
+        <td>{{x[2]}}</td>
+        <td>{{x[3]}}</td>
+        <td><strong>{{x[1]}}</strong></td>
+        <td>
+         
+            <button class="btn btn-warning" id="edit"> <a href="{{ url_for('home.edit', id=x[0]) }}"
+                style="text-decoration: none; color:white;">Edit</a>
+            </button>
+            
+        
+
+        </td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete
+            </button></td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Password Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete this password? (password deleted CANNOT be recover)
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">
+                    <a href="{{url_for('home.delete', id=x[0] )}}"
+                      style="text-decoration: none; color:white;">Delete</a>
+                </div></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="mt-5">
+      <!-- Pagination -->
+      <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <!-- Loop pagination -->
+        {% for x in range(1,total_pages)  %}
+        <li class="page-item mx-1"><a class="page-link" href="{{url_for('home.index', page=x)}}">{{x}}</a></li>
+
+          
+        {% endfor %}
+      </ul>
+    </nav>
+        <!-- Pagination -->
+    </div>
+    
+
+
+   
+    <div class="row mt-5">
+      <div class="col">
+ <div class="mt-5 ">
+    <div class="row justify-content-center">
+      <div class="col  d-grid gap-2 ">
+        <a href="/add-pass" class="btn btn-primary" style="text-decoration: none; color: white">
+          Add Password</a>
+
+      </div>
+     
+      <div class="col  d-grid gap-2">
+        <a href="{{ url_for('text.index', id=id) }}" class="btn btn-primary ms-3 text-center">Textbin</a>
+
+
+      </div>
+
+    </div>
+
+  </div>
+      </div>
+
+    </div>
+    
+  </div>
+ 
+  
+  
+</div>
+
+
+
+
+
+{% endblock %}

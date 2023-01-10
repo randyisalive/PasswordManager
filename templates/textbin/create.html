@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>TextBin</title>
+
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <form action="" method="POST" class="form-control mt-5">
+        <div class="container">
+            <div class="container mt-2">
+                <label for="subject">Title</label>
+                <input type="text" name="subject" class="form-control">
+
+            </div>
+            <div class="container mt-2">
+                <label for="text">Text</label>
+                <textarea name="text" id="" cols="30" rows="10" class="form-control"></textarea>
+
+            </div>
+            <div class="container mt-2">
+                <input type="radio" name="filter" value="0">
+                <label for="radio">Basic</label>
+            </div>
+            <div class="container mt-2">
+                <input type="radio" name="filter" value="1">
+                <label for="radio">Code</label>
+            </div>
+            <div class="container mt-2">
+                <input type="radio" name="filter" value="2">
+                <label for="radio">Important</label>
+            </div>
+
+
+            <div class="container d-grid gap-2  mt-2">
+                <input type="submit" value="Submit" class="btn btn-primary">
+
+            </div>
+
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}

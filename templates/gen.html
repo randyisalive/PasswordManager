@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block title %}
+<title>Generator - Password Manager</title>
+
+{% endblock %} {% block body %} {% include 'navbar.html' %}
+<div class="container">
+  <div class="card mt-5 p-5">
+    <div class="title text-center">
+      <h1>Password Generator</h1>
+    </div>
+    <div class="container p-5">
+      <div class="align-items-center">
+        <div class="row gx-5">
+          <div class="col">
+            <div class="container p-3">
+              <form action="/gen" class="" method="GET">
+                <div class="row">
+                  <div class="col">
+                    <span>Input lengh of password:</span>
+                    <input
+                      type="number"
+                      class="form-control mb-3"
+                      name="number"
+                      id="number"
+                      value="0"
+                    />
+                    <span>Choose character set for password from these: </span><br />
+                    <input type="checkbox" value="Digits" name="type" />
+                    <span>Digits</span><br />
+                    <input type="checkbox" value="Letters" name="type" />
+                    <span>Letters</span><br />
+                    <input type="checkbox" value="Special Character" name="type" />
+                    <span>Special Character</span><br />
+                    <input type="checkbox" value="Uppercase" name="type" />
+                    <span>Uppercase</span><br />
+                    <input type="checkbox" value="Lowercase" name="type" />
+                    <span>Lowercase</span><br />
+                  </div>
+                  <div class="col">
+                    <div class="row align-items-center" style="height: 100%">
+                      <div class="col">
+                        <div class="text-center">
+                          <span class="">Your Password</span>
+                          {% if user_password != '' and session.get('username') %}
+                          <p style="font-weight: bold">{{user_password}}</p>
+
+                          <button class="btn btn-warning">
+                            <a
+                              href="{{ url_for('home.add_pass', user_password=user_password) }}"
+                              class="text-white"
+                              style="text-decoration: none"
+                              >Copy</a
+                            >
+                          </button>
+                          {% else %}
+                          <h2>{{user_password}}</h2>
+
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <input type="submit" class="btn btn-primary" />
+                  <button class="btn btn-danger">
+                    <a href="/gen" class="text-decoration-none text-white">RESET</a>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

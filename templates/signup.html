@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {% block title %}
+<title>Sign Up - Password Manager</title>
+
+{% endblock %} {% block body %}
+
+<div class="container">
+  <div class="setting-border mt-5">
+    <div class="row">
+      <div class="col">
+        <div class="container-fluid card p-3">
+          <div class="box">
+            <div class="text-center mt-3">
+              <h1>Sign Up</h1>
+            </div>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <form action="" method="POST">
+                    <div class="row">
+                      <div class="col mb-4">
+                        <span>Your Email</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-4">
+                        <input type="text" name="email" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-4">
+                        <span>Your Username</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-4">
+                        <input type="text" name="username" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-4">
+                        <span>Your Password</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <input type="password" name="password" class="form-control" id="password" />
+                        <div class="mt-3" id="show_pass">
+                          <input type="checkbox" name="" id="show" class="me-1" />
+                          <span>Show Password</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-5">
+                      <div class="row">
+                        <div class="col text-center mb-3">
+                          {% with messages = get_flashed_messages() %} {% if messages %}
+                          <ul class="flashes">
+                            {% for message in messages %}
+                            <div class="alert alert-danger" role="alert">{{message}}</div>
+
+                            {% endfor %}
+                          </ul>
+                          {% endif %} {% endwith %}
+
+                          <h5>
+                            Already a member?
+                            <a href="/login" style="text-decoration: none">Log In</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col text-center mb-6">
+                          <input type="submit" value="Create Account" class="btn btn-primary" />
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row"></div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", function () {
+    var checkbox = document.getElementById("show");
+    var password = document.getElementById("password");
+    checkbox.addEventListener("change", function () {
+      if (this.checked) {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    });
+  });
+</script>
+
+{% endblock %}

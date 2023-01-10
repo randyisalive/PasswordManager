@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{text_content[3]}} - Textbin</title>
+<script>
+  const popover = new bootstrap.Popover(".popover-dismiss", {
+    trigger: "focus",
+  });
+</script>
+
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="text-box container-fluid mt-5">
+    <form action="" method="post">
+      <div class="text-center">
+        <p class="display-6">{{text_content[3]}}</p>
+      </div>
+      <textarea name="content" id="" cols="50" rows="20" class="form-control">
+            {{text_content[1]}}
+        </textarea
+      >
+      <div class="text-center mt-3">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Save & Quit
+        </button>
+      </div>
+
+      <!-- Button trigger modal -->
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Text</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">Save Changes??</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

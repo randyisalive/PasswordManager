@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block title %}
+<title>Textbin - Password Manager</title>
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="container my-3">
+              {% if text %}
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Subject</th>
+                  </tr>
+                </thead>
+                {% set count = [1] %}
+                <tbody>
+                  {% for x in text %}
+
+                  <tr>
+                    <td>{{count[0]}}</td>
+
+                    {% if count.append(count.pop() + 1) %} {% endif %}
+
+                    <td><a href="{{url_for('text.detail', id=x[0], text=x[3])}}">{{x[3]}}</a></td>
+
+                    {% if x[4] == 0 %}
+                    <td>Basic</td>
+                    {% endif %} {% if x[4] == 1 %}
+                    <td>Code</td>
+                    {% endif %} {% if x[4] == 2 %}
+                    <td>IMPORTANT</td>
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <div class="container text-center">
+                <h1 class="text-danger">Empty</h1>
+              </div>
+
+              {% endif %}
+            </div>
+
+            <div class="text-center my-5">
+              <a href="{{url_for('text.create')}}" class="btn btn-primary">New Text</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

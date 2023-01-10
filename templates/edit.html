@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}
+<title>Edit - Password Manager</title>
+
+{% endblock %} {% block body %}
+
+<div class="container">
+  <form action="{{ url_for('home.edit', id=id) }}" class="form-control mt-5" method="POST">
+    {% if content %}
+    <div class="container mb-3">
+      <span>Site</span>
+      <input type="text" name="site" value="{{content[2]}}" class="form-control" />
+    </div>
+    <div class="container mb-3">
+      <span>Email</span>
+      <input type="text" name="email" value="{{content[3]}}" class="form-control" />
+    </div>
+    <div class="container mb-3">
+      <span>Password</span>
+      <input type="text" name="password" value="{{content[1]}}" class="form-control" />
+    </div>
+    <div class="container mb-3">
+      <div class="text-center mt-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+      </div>
+    </div>
+    {% endif %}
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+
+
+
+.name-card {
+    display: block;
+    border-style: solid;
+}
+
+.fix-link {
+    text-decoration: none;
+    color: white;
+}
+
+.fix-link:hover {
+    color: white;
+}

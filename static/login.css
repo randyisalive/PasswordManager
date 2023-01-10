@@ -1,0 +1,27 @@
+
+.row-height {
+    height: 500px;
+    max-height: 1000px;
+}
+
+
+.login-card {
+    background-color: ;
+    height: 100%;
+}
+
+.banner {
+    min-height: 120px;
+    background-color: #C21010;
+}
+
+.bg-p1 {
+    background-color: #3120E0;
+}
+.bg-p2 {
+    background-color: #3B9AE1;
+}
+
+.font-pallete {
+    color: #F0EABE!important;
+}
