@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %}
-<title>{{ session.get('username') }} - Password Manager</title>
+<title>{{ session.get('username') }} - UltraM</title>
 
 {% endblock %} {% block body %} {% include 'navbar.html' %}
 
@@ -18,10 +18,12 @@
             <h5 class="my-3">{{session.get('username')}}</h5>
             <p class="text-muted mb-1">Full Stack Developer</p>
             <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            {% if session.get('username') == user[2] %} {% else %}
             <div class="d-flex justify-content-center mb-2">
               <button type="button" class="btn btn-primary">Follow</button>
               <button type="button" class="btn btn-outline-primary ms-1">Message</button>
             </div>
+            {% endif %}
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">

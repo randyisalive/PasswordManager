@@ -10,7 +10,7 @@ image_manager = Blueprint('image_manager', __name__)
 
 TEMPLATE_ROUTE = 'image-manager/'
 
-route = 'static\img\img_manager'
+route = 'static/img/users/'
 
 
 @image_manager.route('/image-manager', methods=['POST', 'GET'])
@@ -21,8 +21,9 @@ def index():
         session['id'])
     cur.execute(sql)
     images = cur.fetchall()
+    complete_route = route + session['username']
     session.pop('image_id', None)
-    return render_template(TEMPLATE_ROUTE + 'index.html', image=images, route=route)
+    return render_template(TEMPLATE_ROUTE + 'index.html', image=images, complete_route= complete_route)
 
 
 @image_manager.route('/image-manager/detail/<image_id>')

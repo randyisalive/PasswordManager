@@ -15,7 +15,7 @@ def index():
     params = (id)
     sql = "SELECT * FROM users WHERE id = %s" % params
     cur.execute(sql)
-    user = cur.fetchall()
+    user = cur.fetchone()
     cur.close()
     db.close()
     filename = route + session['profile_picture']
