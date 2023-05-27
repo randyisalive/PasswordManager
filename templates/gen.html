@@ -12,7 +12,7 @@
         <div class="row gx-5">
           <div class="col">
             <div class="container p-3">
-              <form action="/gen" class="" method="GET">
+              <form action="" class="" method="GET">
                 <div class="row">
                   <div class="col">
                     <span>Input lengh of password:</span>
@@ -63,7 +63,11 @@
                 <div class="text-center mt-3">
                   <input type="submit" class="btn btn-primary" />
                   <button class="btn btn-danger">
-                    <a href="/gen" class="text-decoration-none text-white">RESET</a>
+                    <a
+                      href="{{url_for('generator.reset', id=id)}}"
+                      class="text-decoration-none text-white"
+                      >RESET</a
+                    >
                   </button>
                 </div>
               </form>

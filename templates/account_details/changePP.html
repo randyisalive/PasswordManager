@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}
+<title>Change Profile Picture - UltraM</title>
+
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="card">
+    <form action="" method="post" enctype="multipart/form-data">
+      <h1>Hello</h1>
+      <label for="upload-image">Upload File</label>
+      <input type="file" name="image" class="form-control" />
+      <input type="submit" value="Change" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}
