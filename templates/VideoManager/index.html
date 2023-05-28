@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Video Manager - UltraM</title>
+
+<style>
+    #vid-link {
+        text-decoration: none;
+        color: black;
+
+    }
+
+    #card-container {
+        padding: 2px;
+        width: fit-content;
+    }
+
+    #card-body:hover {
+        opacity: 0.6;
+    }
+</style>
+{% endblock %}
+{% block body %}
+{% include 'navbar.html' %}
+<div class="container" id="card-container">
+    <h1>Video Manager</h1>
+    <div class="container">
+        {% for item in video %}
+        <a href="" id="vid-link">
+            <div class="card" id="card-body">
+                <div class="container text-center" id="vid-title">
+                    <h1>{{item[1]}}</h1>
+
+
+                </div>
+                <a href="{{url_for('video.detail', video_id=item[0])}}"> <img src="/static/img/default.jpg" alt=""
+                        class="img img-thumbnail mt-3 mb-3" height="240" width="320">
+                </a>
+
+
+
+
+
+            </div>
+        </a>
+
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+
+
+
+</div>
+<br>
+<br><br>
+<br><br><br><br>
+
+{% endblock %}
