@@ -45,7 +45,7 @@ def index(id):
     total_text = get_total_text_from_user(id) # Get total text from a user (session dependent)
     total_images = get_total_image_from_user(24) # Get total image uploaded from a user (session dependent)
     total_pass = get_total_pass_from_user(id) # Get total password from a user (session dependant)
-    filename = route + session["profile_picture"] # File route for profile picture
+    filename = route + str(session["profile_picture"]) # File route for profile picture
     db.close()
     return render_template(
         templates_route + "account_details.html",

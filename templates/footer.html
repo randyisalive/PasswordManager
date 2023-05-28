@@ -33,7 +33,10 @@
     border-bottom: white;
   }
 
-
+  #footer-social-container {
+    border-bottom: solid rgba(255, 255, 255, 0.5) 1px;
+    margin-bottom: 1.5rem;
+  }
 
   #footer-label {
     width: 100%;
@@ -75,67 +78,70 @@
 <footer>
   <div class="container" style="    margin-left: 200px;
   margin-right: 200px;">
-    <div class="row">
-      <div class="col mt-3 mb-3">
-        <div class="container d-flex">
-          <label for="" id="footer-label-2">Follow Us</label>
-          <div class="container d-flex gap-3">
-            <a href="" class="img-bg">
-              <img src="/static/img/instagram.svg" alt="Instagram" width="25" height="25">
-            </a>
-            <a href="" class="img-bg">
-              <img src="/static/img/twitter.svg" alt="Twitter" width="25" height="25">
+    <div id="footer-social-container">
+      <div class="row mb-3">
+        <div class="col mt-3 mb-3">
+          <div class="container d-flex">
+            <label for="" id="footer-label-2">Follow Us</label>
+            <div class="container d-flex gap-3">
+              <a href="" class="img-bg">
+                <img src="/static/img/instagram.svg" alt="Instagram" width="25" height="25">
+              </a>
+              <a href="" class="img-bg">
+                <img src="/static/img/twitter.svg" alt="Twitter" width="25" height="25">
 
-            </a>
-            <a href="" class="img-bg">
-              <img src="/static/img/discod.svg" alt="Discord" width="25" height="25">
-
-
-            </a>
-
-          </div>
+              </a>
+              <a href="" class="img-bg">
+                <img src="/static/img/discod.svg" alt="Discord" width="25" height="25">
 
 
-
-        </div>
-      </div>
-      <div class="col">
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <div class="col m-4">
-                <div class="container d-flex">
-                  <labeL id="footer-label"> Get The App
-                  </label>
-                </div>
-
-
-              </div>
-              <div class="col mt-3">
-                <div class="container mt-3 d-flex gap-2">
-                  <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_googleplay.png" alt="Playstore"
-                      height="30" class="img-play"></a>
-                  <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_iOS.png" alt="App Store"
-                      height="30" class="img-app"></a>
-                </div>
-
-              </div>
+              </a>
 
             </div>
 
 
 
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col m-4">
+                  <div class="container d-flex">
+                    <labeL id="footer-label"> Get The App
+                    </label>
+                  </div>
+
+
+                </div>
+                <div class="col mt-3">
+                  <div class="container mt-3 d-flex gap-2">
+                    <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_googleplay.png" alt="Playstore"
+                        height="30" class="img-play"></a>
+                    <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_iOS.png" alt="App Store"
+                        height="30" class="img-app"></a>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
 
 
           </div>
 
-
         </div>
 
+
       </div>
-
-
     </div>
+
     <div class="row">
       <div class="container">
         <a href="{{url_for('home.index')}}" id="footer-link">

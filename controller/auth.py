@@ -1,7 +1,7 @@
 from flask import Blueprint, session, redirect, render_template, flash, url_for, request
 from db import db_connection
 import os
-
+import shutil
 
 auth = Blueprint('auth', __name__)
 folder_route = 'static/img/users/'
@@ -52,7 +52,7 @@ def signup():
         if user is None:
             username = username.strip().capitalize()
             user_folder = os.path.join(folder_route, username)
-            path_user = folder_route + username
+            path_user = folder_route + username # static/img/users/USERNAME
             if os.path.exists(path_user):
                 os.rmdir(path_user)
                 os.mkdir(user_folder)
