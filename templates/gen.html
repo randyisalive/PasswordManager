@@ -16,13 +16,7 @@
                 <div class="row">
                   <div class="col">
                     <span>Input lengh of password:</span>
-                    <input
-                      type="number"
-                      class="form-control mb-3"
-                      name="number"
-                      id="number"
-                      value="0"
-                    />
+                    <input type="number" class="form-control mb-3" name="number" id="number" value="0" />
                     <span>Choose character set for password from these: </span><br />
                     <input type="checkbox" value="Digits" name="type" />
                     <span>Digits</span><br />
@@ -44,12 +38,8 @@
                           <p style="font-weight: bold">{{user_password}}</p>
 
                           <button class="btn btn-warning">
-                            <a
-                              href="{{ url_for('home.add_pass', user_password=user_password) }}"
-                              class="text-white"
-                              style="text-decoration: none"
-                              >Copy</a
-                            >
+                            <a href="{{ url_for('home.add_pass', user_password=user_password) }}" class="text-white"
+                              style="text-decoration: none">Copy</a>
                           </button>
                           {% else %}
                           <h2>{{user_password}}</h2>
@@ -63,11 +53,7 @@
                 <div class="text-center mt-3">
                   <input type="submit" class="btn btn-primary" />
                   <button class="btn btn-danger">
-                    <a
-                      href="{{url_for('generator.reset', id=id)}}"
-                      class="text-decoration-none text-white"
-                      >RESET</a
-                    >
+                    <a href="{{url_for('generator.reset', id=id)}}" class="text-decoration-none text-white">RESET</a>
                   </button>
                 </div>
               </form>

@@ -1,69 +1,162 @@
-<footer class="text-center text-white" style="background-color: #f1f1f1">
-  <!-- Grid container -->
-  <div class="container pt-4">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
+<style>
+  footer {
+    display: flex;
+    width: 100vw;
+    text-align: center;
+    background-color: #0a58ca;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
+    margin-top: 3.5rem;
+    color: white;
 
-      <!-- Twitter -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-twitter"></i
-      ></a>
+  }
 
-      <!-- Google -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-google"></i
-      ></a>
+  .img-bg {
+    background-color: white;
+    display: block;
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    padding: 3px;
+  }
 
-      <!-- Instagram -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-instagram"></i
-      ></a>
+  #footer-link {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
 
-      <!-- Linkedin -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-      <!-- Github -->
-      <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
-        role="button"
-        data-mdb-ripple-color="dark"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
+  #footer-link:hover {
+    text-decoration: underline;
+    border-bottom: white;
+  }
+
+
+
+  #footer-label {
+    width: 100%;
+    padding-top: 15px;
+    color: #e5e5e5;
+    border: none;
+    cursor: default;
+    font-size: 12px;
+
+  }
+
+  #footer-label-2 {
+    width: 100%;
+    padding-top: 20px;
+    color: #e5e5e5;
+    border: none;
+    cursor: default;
+    font-size: 12px;
+
+
+  }
+
+  #copyrights {
+    color: #9caed9;
+    font-size: 12px;
+    margin-top: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .img-play:hover {
+    opacity: 0.7;
+  }
+
+  #capthca {
+    font-size: 8px;
+    color: #9caed9;
+  }
+</style>
+<footer>
+  <div class="container" style="    margin-left: 200px;
+  margin-right: 200px;">
+    <div class="row">
+      <div class="col mt-3 mb-3">
+        <div class="container d-flex">
+          <label for="" id="footer-label-2">Follow Us</label>
+          <div class="container d-flex gap-3">
+            <a href="" class="img-bg">
+              <img src="/static/img/instagram.svg" alt="Instagram" width="25" height="25">
+            </a>
+            <a href="" class="img-bg">
+              <img src="/static/img/twitter.svg" alt="Twitter" width="25" height="25">
+
+            </a>
+            <a href="" class="img-bg">
+              <img src="/static/img/discod.svg" alt="Discord" width="25" height="25">
+
+
+            </a>
+
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col m-4">
+                <div class="container d-flex">
+                  <labeL id="footer-label"> Get The App
+                  </label>
+                </div>
+
+
+              </div>
+              <div class="col mt-3">
+                <div class="container mt-3 d-flex gap-2">
+                  <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_googleplay.png" alt="Playstore"
+                      height="30" class="img-play"></a>
+                  <a href=""><img src="https://cdn.myanimelist.net/images/appli/badge_iOS.png" alt="App Store"
+                      height="30" class="img-app"></a>
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="container">
+        <a href="{{url_for('home.index')}}" id="footer-link">
+          Home
+        </a>
+        |
+        <a href="" id="footer-link">About</a>
+        <a href="" id="footer-link">Support</a>
+        <a href="" id="footer-link">FAQ</a>
+        <a href="" id="footer-link">Privacy</a>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+        <p id="copyrights">MyAnimeList.net is a property of MyAnimeList Co.,Ltd. ©2023 All Rights Reserved.
+        </p>
+        <p id="capthca">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+        </p>
+      </div>
+
+    </div>
   </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
 </footer>

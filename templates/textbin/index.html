@@ -1,5 +1,16 @@
 {% extends 'base.html' %} {% block title %}
 <title>Textbin - Password Manager</title>
+<style>
+  #select-text {
+    text-decoration: none;
+    color: black;
+    cursor: po;
+  }
+
+  #select-text:hover {
+    opacity: 0.7;
+  }
+</style>
 {% endblock %} {% block body %} {% include 'navbar.html' %}
 <div class="container">
   <div class="mt-5 p-5">
@@ -20,13 +31,12 @@
                 {% set count = [1] %}
                 <tbody>
                   {% for x in text %}
-
                   <tr>
                     <td>{{count[0]}}</td>
 
                     {% if count.append(count.pop() + 1) %} {% endif %}
 
-                    <td><a href="{{url_for('text.detail', id=x[0], text=x[3])}}">{{x[3]}}</a></td>
+                    <td><a href="{{url_for('text.detail', id=x[0], text=x[3])}}" id="select-text">{{x[3]}}</a></td>
 
                     {% if x[4] == 0 %}
                     <td>Basic</td>
@@ -36,6 +46,9 @@
                     <td>IMPORTANT</td>
                     {% endif %}
                   </tr>
+                  </a>
+
+
                   {% endfor %}
                 </tbody>
               </table>

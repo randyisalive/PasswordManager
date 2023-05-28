@@ -2,15 +2,27 @@
 <title>Change Profile Picture - UltraM</title>
 
 {% endblock %} {% block body %}
+
+{% include 'navbar.html' %}
 <div class="container">
-  <div class="card">
-    <form action="" method="post" enctype="multipart/form-data">
-      <h1>Hello</h1>
-      <label for="upload-image">Upload File</label>
-      <input type="file" name="image" class="form-control" />
-      <input type="submit" value="Change" />
-    </form>
+  <div class="card mt-5">
+    <div class="row justify-content-center d-flex">
+      <div class="col-3 text-center">
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="container mt-4 mb-3">
+            <img src="{{profile_picture}}" alt="" class="img img-thumbnail">
+
+          </div>
+          <input type="file" name="image" class="form-control mt-4 mb-4" />
+          <input type="submit" value="Change" class="btn btn-primary mb-4" />
+        </form>
+
+      </div>
+
+    </div>
+
   </div>
 </div>
+{% include 'footer.html' %}
 
 {% endblock %}
