@@ -6,6 +6,7 @@
     #vid-link {
         text-decoration: none;
         color: black;
+        display: flex;
 
     }
 
@@ -22,30 +23,49 @@
 {% block body %}
 {% include 'navbar.html' %}
 <div class="container" id="card-container">
-    <h1>Video Manager</h1>
-    <div class="container">
-        {% for item in video %}
-        <a href="" id="vid-link">
-            <div class="card" id="card-body">
-                <div class="container text-center" id="vid-title">
-                    <h1>{{item[1]}}</h1>
+    <div class="container text-center mt-3 mb-3">
+        <h1>Video Manager</h1>
+    </div>
+    <div class="container d-flex">
+        {% if video == [] %}
+        <div class="container text-center">
+            <h1>Video Empty</h1>
+        </div>
+
+
+
+
+        {% else %}
+        <div class="container">
+            {% for item in video %}
+
+            <div href="" id="vid-link">
+
+                <div class="card" id="card-body">
+                    <div class="container text-center" id="vid-title">
+                        <h1>{{item[1]}}</h1>
+
+
+                    </div>
+                    <a href="{{url_for('video.detail', video_id=item[0])}}"> <img src="/static/img/default.jpg" alt=""
+                            class="img img-thumbnail mt-3 mb-3" height="240" width="320">
+                    </a>
+
+
+
 
 
                 </div>
-                <a href="{{url_for('video.detail', video_id=item[0])}}"> <img src="/static/img/default.jpg" alt=""
-                        class="img img-thumbnail mt-3 mb-3" height="240" width="320">
-                </a>
-
-
-
-
-
             </div>
-        </a>
-
-
+        </div>
 
         {% endfor %}
+
+
+
+
+        {% endif %}
+
 
 
     </div>

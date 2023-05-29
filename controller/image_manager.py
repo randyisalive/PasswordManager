@@ -12,6 +12,7 @@ from route import APP_ROOT
 from db import db_connection
 from werkzeug.utils import secure_filename
 import os
+from services.image_manager import *
 
 image_manager = Blueprint("image_manager", __name__)
 
@@ -23,32 +24,20 @@ route = "static/img/users/"
 
 @image_manager.route("/image-manager", methods=["POST", "GET"])
 def index():
-    db = db_connection()
-    cur = db.cursor()
-    sql = "SELECT file_name, image_name, id FROM images WHERE users_id = %s" % (
-        session["id"]
-    )
-    cur.execute(sql)
-    images = cur.fetchall()
+    make_user_folder() # make user folder to store image
+    images = get_user_image(session['id']) # get user image image for displaying to web 
     complete_route = route + session["username"]
-    session.pop("image_id", None)
+    session.pop("image_id", None) # remove image_id value in session
     return render_template(
         TEMPLATE_ROUTE + "index.html",
         image=images,
         complete_route=complete_route,
-        id=id,
     )
 
 
 @image_manager.route("/image-manager/detail/<image_id>")
 def detail(image_id):
-    db = db_connection()
-    cur = db.cursor()
-    params = image_id
-
-    sql = "SELECT * FROM images WHERE id = %s" % params
-    cur.execute(sql)
-    image = cur.fetchone()
+    image = get_detail_image(image_id)
     file_name = image[1]
     session["image_id"] = image_id
     file_name = str(file_name)
@@ -57,8 +46,6 @@ def detail(image_id):
     username = str(session["username"])
     string_username = username.strip().capitalize()
     file_route = "static/img/users/" + string_username
-    cur.close()
-    db.close()
     return render_template(
         TEMPLATE_ROUTE + "detail.html",
         image=image,
@@ -99,23 +86,17 @@ def upload_image():
 def delete():
     file_route = "static/img/users/" + session["username"]
     id = session["id"]
-    db = db_connection()
-    cur = db.cursor()
-    sql = "SELECT * FROM images WHERE users_id = %s " % (id)
-    cur.execute(sql)
-    image = cur.fetchall()
+    image = get_user_image(id)
     if image:
         if session.get("image_id"):
             id = session["image_id"]
             image_name = session["file_name"]
-            cur.execute("DELETE FROM images WHERE id = %s" % (id))
-            cur.close()
-            db.commit()
-            session.pop("image_id", None)
-            os.remove(file_route + "/" + image_name)
+            delete_user_image(id) # delete user image
+            session.pop("image_id", None) # after delete, pop the image id so it is not in session
+            os.remove(file_route + "/" + image_name) # remove image after being deleted by 
             return redirect(url_for("image_manager.index"))
     else:
         error = "Image ID is None"
-        return render_template("404.html", error=error)
+        return error
     error = "Image is None"
-    return render_template("404.html", error=error)
+    return error

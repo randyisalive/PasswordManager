@@ -1,24 +1,51 @@
 {% extends 'base.html' %} {% block title %}
 <title>Detail - Password Manager</title>
 
+<style>
+  #title-input {
+    border: solid black 1px;
+    transition: border-color 0.4s ease;
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+
+
+  }
+
+  #title-input:focus {
+    border-color: blue;
+
+
+  }
+
+  #title-input::before {
+    content: "Hello";
+    background-color: red;
+  }
+</style>
+
 {% endblock %} {% block body %}
 <div class="container">
   <div class="card mt-5">
-    <div class="card-body">
-      <div class="text-center mt-5">
-        <img
-          src="/{{file_route}}{{image[1]}}"
-          alt="Image"
-          class="img-fluid rounded"
-          width="800px"
-          height="600px"
-        />
-      </div>
+    <form action="" method="post">
       <div class="container text-center mt-4">
-        <a href="{{url_for('image_manager.delete')}}" class="btn btn-danger">Delete</a>
+        <input type="text" name="title-image" id="title-input" value="{{image[4]}}" class="display-6">
+
+
       </div>
-    </div>
+      <div class="card-body">
+        <div class="text-center mt-5">
+
+          <img src="/{{file_route}}{{image[1]}}" alt="Image" class="img-fluid rounded" width="800px" height="600px" />
+        </div>
+        <div class="container text-center mt-4">
+          <a href="{{url_for('image_manager.delete')}}" class="btn btn-danger">Delete</a>
+          <input type="submit" class="btn btn-primary" value="Save">
+        </div>
+    </form>
+
   </div>
+</div>
 </div>
 
 {% endblock %}
