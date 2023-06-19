@@ -18,8 +18,9 @@ TEMPLATE_ROUTE = "image-manager/"
 route = "static/img/users/"
 
 
-@image_manager.route("/image-manager", methods=["POST", "GET"])
-def index():
+@image_manager.route("/image-manager<id>", methods=["POST", "GET"])
+def index(id):
+    id = session['id']
     make_user_folder()  # make user folder to store image
     images = get_user_image(session["id"])  # get user image image for displaying to web
     complete_route = route + session["username"]
@@ -28,10 +29,11 @@ def index():
         TEMPLATE_ROUTE + "index.html",
         image=images,
         complete_route=complete_route,
+        id=id
     )
 
 
-@image_manager.route("/image-manager/detail/<image_id>")
+@image_manager.route("/image-manager/detail/<image_id>", methods=['POST', 'GET'])
 def detail(image_id):
     image = get_detail_image(image_id)
     file_name = image[1]
@@ -42,6 +44,12 @@ def detail(image_id):
     username = str(session["username"])
     string_username = username.strip().capitalize()
     folder_route = "static/img/users/" + string_username
+    if request.method == "POST":
+        title = request.form['title-image']
+        change_image_name(title, image_id)
+        return redirect(url_for('image_manager.detail', image_id=image_id))
+         
+    
     return render_template(
         TEMPLATE_ROUTE + "detail.html",
         image=image,
@@ -62,7 +70,7 @@ def upload_image():
         save_image_to_folder(
             filename, folder_route, file
         )  # copy and paste image to folder
-        return redirect(url_for("image_manager.index"))
+        return redirect(url_for("image_manager.index", id=id))
     return render_template(TEMPLATE_ROUTE + "form.html")
 
 
@@ -88,3 +96,10 @@ def delete():
         return error
     error = "Image is None"
     return error
+
+@image_manager.route('/album<id>')
+def album(id):
+    if not session:
+        return redirect('auth.login')
+    id = session.get('id')
+    return render_template(TEMPLATE_ROUTE + 'album.html', id=id)

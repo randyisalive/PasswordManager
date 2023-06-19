@@ -13,6 +13,17 @@ def make_user_folder():
         pass
 
 
+def change_image_name(title, image_id):
+    db = db_connection()
+    cur = db.cursor()
+    params = (title, image_id)
+    sql = "UPDATE images SET image_name = '%s' WHERE id = '%s'" % params
+    cur.execute(sql)
+    db.commit()
+    cur.close()
+    db.close()
+        
+
 def get_user_image(id):
     db = db_connection()
     cur = db.cursor()
@@ -28,12 +39,9 @@ def get_detail_image(image_id):
     db = db_connection()
     cur = db.cursor()
     params = image_id
-
     sql = "SELECT * FROM images WHERE id = %s" % params
     cur.execute(sql)
     image = cur.fetchone()
-    cur.close()
-    db.close()
     return image
 
 

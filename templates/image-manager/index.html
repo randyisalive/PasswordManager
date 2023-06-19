@@ -11,21 +11,12 @@
       {% for item in image %}
       <div class="col-4">
         <div class="card mt-5" style="width: 18rem">
-          <img
-            src="{{complete_route}}{{item[0]}}"
-            alt="adasd"
-            class="card-img-top"
-            height="220px"
-            width="100px"
-          />
+          <img src="{{complete_route}}{{item[0]}}" alt="adasd" class="card-img-top" height="220px" width="100px" />
           <div class="card-body text-center">
             <h5 class="card-title">{{item[1]}}</h5>
 
-            <a
-              href="{{url_for('image_manager.detail', image_id=item[2], file_name=item[0])}}"
-              class="btn btn-primary"
-              >Detail</a
-            >
+            <a href="{{url_for('image_manager.detail', image_id=item[2], file_name=item[0])}}"
+              class="btn btn-primary">Detail</a>
           </div>
         </div>
       </div>
@@ -33,9 +24,8 @@
     </div>
     <div class="row">
       <div class="col text-center mb-5">
-        <a href="{{ url_for('image_manager.upload_image') }}" class="text-decoration-none">
-          <button class="btn btn-primary">UPLOAD IMAGE</button></a
-        >
+        <a href="{{ url_for('image_manager.album', id=id) }}" class="text-decoration-none">
+          <button class="btn btn-primary">Add New Album</button></a>
       </div>
     </div>
   </div>

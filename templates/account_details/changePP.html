@@ -10,7 +10,7 @@
       <div class="col-3 text-center">
         <form action="" method="post" enctype="multipart/form-data">
           <div class="container mt-4 mb-3">
-            {% if session.get('profile_picture') == None %}
+            {% if session.get('profile_picture') == None or session.get('profile_picture') == '' %}
             <img src="/static/img/default.jpg" alt="" class="img img-thumbnail">
             {% else %}
             <img src="{{profile_picture}}" alt="" class="img img-thumbnail">

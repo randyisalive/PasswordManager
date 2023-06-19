@@ -1,8 +1,6 @@
 from flask import Blueprint, session, redirect, render_template, flash, url_for, request
 from db import db_connection
 import os
-import shutil
-
 auth = Blueprint('auth', __name__)
 folder_route = 'static/img/users/'
 
