@@ -42,10 +42,16 @@ def index(id):
     cur.execute(sql)
     user = cur.fetchone()
     cur.close()
-    total_text = get_total_text_from_user(id) # Get total text from a user (session dependent)
-    total_images = get_total_image_from_user(24) # Get total image uploaded from a user (session dependent)
-    total_pass = get_total_pass_from_user(id) # Get total password from a user (session dependant)
-    filename = route + str(session["profile_picture"]) # File route for profile picture
+    total_text = get_total_text_from_user(
+        id
+    )  # Get total text from a user (session dependent)
+    total_images = get_total_image_from_user(
+        24
+    )  # Get total image uploaded from a user (session dependent)
+    total_pass = get_total_pass_from_user(
+        id
+    )  # Get total password from a user (session dependant)
+    filename = route + str(session["profile_picture"])  # File route for profile picture
     db.close()
     return render_template(
         templates_route + "account_details.html",
@@ -57,6 +63,11 @@ def index(id):
         total_images=total_images,
         USER_DIRECTORY=USER_DIRECTORY,
     )
+
+
+@account.route("/update/<id>")
+def update(id):
+    return redirect(url_for("account.index", id=id))
 
 
 @account.route("/account/changepicture/<id>", methods=["POST", "GET"])
@@ -77,7 +88,7 @@ def changePP(id):
         db.commit()
         cur.close()
         db.close()
-        # 
+        #
         if os.path.exists(file_route):
             file.save(os.path.join(file_route, filename))
             session.clear()
@@ -87,7 +98,9 @@ def changePP(id):
             session.clear()
 
         return redirect(url_for("auth.login"))
-    
+
     # Get route to display user profile picture
-    profile_picture = "/" + file_route + str(session['profile_picture'])
-    return render_template(templates_route + "changePP.html", id=id, profile_picture=profile_picture)
+    profile_picture = "/" + file_route + str(session["profile_picture"])
+    return render_template(
+        templates_route + "changePP.html", id=id, profile_picture=profile_picture
+    )

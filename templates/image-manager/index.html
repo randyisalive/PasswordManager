@@ -5,8 +5,6 @@
     text-decoration: none !important;
     width: fit-content;
     height: fit-content;
-
-
   }
 
   h3 {
@@ -21,29 +19,28 @@
     border: solid black 1px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-color: #000;
+  }
 
+  #content-container {
+    margin-top: -2rem !important;
   }
 </style>
 
 {% endblock %} {% block body %} {% include 'navbar.html' %}
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="card">
     <div id="title" class="text-center mt-5 border-bottom ms-2">
       <h2>Album</h2>
     </div>
-    <div class="row p-5 mt-5">
+    <div class="row p-5 mt-5" id="content-container">
       {% for item in album %}
       <div class="col-4">
         <a href="{{url_for('image_manager.detail', album_id=item[0])}}">
-          <div id="card" class="card mt-5" style="width: 18rem; min-height:18rem;">
+          <div id="card" class="card mt-5" style="width: 18rem; min-height: 18rem">
             <div class="card-body d-flex justify-content-center align-items-center">
               <div class="text-center">
                 <h3>{{item[1]}}</h3>
-
-
               </div>
-
-
             </div>
           </div>
         </a>
@@ -53,7 +50,8 @@
     <div class="row">
       <div class="col text-center mb-5">
         <a href="{{ url_for('image_manager.album', id=id) }}" class="text-decoration-none">
-          <button class="btn btn-primary">Add New Album</button></a>
+          <button class="btn btn-primary">Add New Album</button></a
+        >
       </div>
     </div>
   </div>

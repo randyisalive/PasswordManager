@@ -1,6 +1,13 @@
 {% extends 'base.html' %} {% block title %}
 <title>UltraM</title>
-
+<style>
+  #container {
+    margin-top: 3.5rem!important;
+  }
+  #bottom-content {
+    margin-top: 20rem!important;
+  }
+</style>
 
 
 {% endblock %} {% block body %}
@@ -8,7 +15,7 @@
 
 
 
-<div class="container mt-4 card p-5 border">
+<div class="container mt-4 card p-5 border" id="container">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -92,7 +99,7 @@
 
 
 
-        <div class="row mt-5">
+        <div class="row mt-5" id="bottom-content">
           <div class="col">
             <div class="mt-5 ">
               <div class="row justify-content-center">
