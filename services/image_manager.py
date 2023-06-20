@@ -1,7 +1,7 @@
 import os
 from db import db_connection
 from flask import session
-
+from datetime import datetime
 
 def make_user_folder():
     if not session.get("username"):
@@ -24,13 +24,12 @@ def change_image_name(title, image_id):
     db.close()
         
 
-def get_user_image(id):
+def get_user_image(user_id, album_id):
     db = db_connection()
     cur = db.cursor()
-    sql = "SELECT file_name, image_name, id FROM images WHERE users_id = %s" % (
-        session["id"]
-    )
-    cur.execute(sql)
+    sql = "SELECT * FROM images WHERE album_id = ? AND users_id = ?"
+    params = (album_id, user_id)
+    cur.execute(sql, params)
     images = cur.fetchall()
     return images
 
@@ -54,12 +53,13 @@ def delete_user_image(image_id):
     db.commit()
 
 
-def up_image(filename, id, image_name):
+def up_image(filename, id, image_name, album_id, file_size):
     db = db_connection()
     cur = db.cursor()
-    params = (filename, id, image_name)
+    date = datetime.now()
+    params = (filename, id, image_name, date, album_id, file_size)
     sql = (
-        "INSERT INTO images (file_name, users_id, image_name) VALUES ('\%s', '%s','%s') "
+        "INSERT INTO images (file_name, users_id, image_name, posted_at, album_id, img_size) VALUES ('%s', '%s','%s', '%s', '%s', '%s') "
         % params
     )
     cur.execute(sql)
@@ -74,3 +74,22 @@ def save_image_to_folder(filename, route, file):
     else:
         os.mkdir(route)
         file.save(os.path.join(route, filename))
+
+
+def add_album(title, id):
+    db = db_connection()
+    cur = db.cursor()
+    params = (title, id)
+    cur.execute('INSERT INTO album (title, user_id) VALUES (?,?)', params)
+    db.commit()
+    cur.close()
+    
+def get_user_album(user_id):
+    db = db_connection()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM album WHERE user_id = ?", (user_id,))
+    album = cur.fetchall()
+    cur.close()
+    db.close()
+    return album
+    
