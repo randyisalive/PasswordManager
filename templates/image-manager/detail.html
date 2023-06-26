@@ -12,6 +12,14 @@
     align-items: center;
 
   }
+
+  #card-outer:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  }
 </style>
 
 {% endblock %} {% block body %}
@@ -20,8 +28,8 @@
   {% if images %}
   {% for x in images %}
 
-  <a href="">
-    <div class="card p-3 mt-3">
+  <a href="/static/img/users/{{session.get('username').strip().capitalize()}}/{{x[1]}}">
+    <div class="card p-3 mt-3" id="card-outer">
       <div class="row">
         <div class="col">
           <img src="/static/img/users/{{session.get('username').strip().capitalize()}}/{{x[1]}}" alt="image"
@@ -32,7 +40,7 @@
             <p class="text-center
             ">{{x[4]}}</p>
 
-            <p>{{x[6]}}</p>
+            <p>{{x[6]}} Bytes</p>
 
           </div>
         </div>

@@ -20,6 +20,8 @@ app = Flask(__name__)
 app.secret_key = "1"
 app.debug = True
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 megabytes
+
 
 
 toolbar = DebugToolbarExtension(app)

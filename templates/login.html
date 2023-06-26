@@ -11,11 +11,13 @@
     flex-direction: column;
     width: 34vw;
   }
+
   #lower-login {
-    margin-top: 5rem!important;
+    margin-top: 5rem !important;
   }
+
   form {
-    margin-bottom: 4rem!important;
+    margin-bottom: 4rem !important;
   }
 
   .input-container {
@@ -29,6 +31,7 @@
     <div class="card-body mt-5 mb-5 d-flex justify-content-center align-items-center">
       <div id="login-container">
         <div class="container mb-3">
+          <img src="/static/img/answer.jpeg" alt="">
           <h1>Login</h1>
         </div>
         <form method="POST" action="" class="mt-3">
@@ -37,7 +40,7 @@
               <label class="p" for="form1Example1">Username</label>
               <input type="text" id="form1Example1" class="form-control" name="username" />
             </div>
-  
+
             <div class="container mb-4">
               <label class="p" for="form1Example2">Password</label>
               <input type="password" id="password" class="form-control" name="password" />
@@ -54,40 +57,33 @@
             </div>
             {% endif %}
           </div>
-          
+
 
           <div class="container-fluid" id="lower-login">
             <div class="row mb-4 justify-content-center">
-            <div class="col d-flex justify-content-center">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="form1Example3"
-                  name="remember"
-                  checked
-                />
-                <label class="form-check-label" for="form1Example3"> Remember me </label>
+              <div class="col d-flex justify-content-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" name="remember" checked />
+                  <label class="form-check-label" for="form1Example3"> Remember me </label>
+                </div>
+              </div>
+
+              <div class="col text-center">
+                <a href="#!" class="text-primary" style="text-decoration: none">Forgot password?</a>
               </div>
             </div>
-
-            <div class="col text-center">
-              <a href="#!" class="text-primary" style="text-decoration: none">Forgot password?</a>
-            </div>
-            </div>
             <div class="row justify-content-center">
-            <div class="button-wrapper col">
-              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-            </div>
-            <div class="col">
-              <button type="button" class="btn btn-primary btn-block">
-                <a href="/signup" class="fix-link">Sign up</a>
-              </button>
-            </div>
+              <div class="button-wrapper col">
+                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary btn-block">
+                  <a href="/signup" class="fix-link">Sign up</a>
+                </button>
+              </div>
             </div>
           </div>
-          
+
         </form>
       </div>
     </div>
@@ -180,23 +176,23 @@
   </div>
 </div> -->
 
-          <script>
-            window.addEventListener("load", function () {
-              var checkbox = document.getElementById("show");
-              var password = document.getElementById("password");
-              checkbox.addEventListener("change", function () {
-                if (this.checked) {
-                  password.type = "text";
-                } else {
-                  password.type = "password";
-                }
-              });
-            });
-          </script>
+<script>
+  window.addEventListener("load", function () {
+    var checkbox = document.getElementById("show");
+    var password = document.getElementById("password");
+    checkbox.addEventListener("change", function () {
+      if (this.checked) {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    });
+  });
+</script>
 
-          {% endblock %}
-        </form>
-      </div>
-    </div>
-  </div>
+{% endblock %}
+</form>
+</div>
+</div>
+</div>
 </div>

@@ -70,10 +70,12 @@ def up_image(filename, id, image_name, album_id, file_size):
 
 def save_image_to_folder(filename, route, file):
     if os.path.exists(route):
-        file.save(os.path.join(route, filename))
+        file.seek(0) # move the pointer to the start
+        file.save(os.path.join(route, filename)) # save the file
     else:
-        os.mkdir(route)
-        file.save(os.path.join(route, filename))
+        os.mkdir(route) # make folder
+        file.seek(0) # move the pointer to the start
+        file.save(os.path.join(route, filename)) # save the file
 
 
 def add_album(title, id):
