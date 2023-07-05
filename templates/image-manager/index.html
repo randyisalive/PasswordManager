@@ -1,40 +1,56 @@
 {% extends 'base.html' %} {% block title %}
 <title>Image Manager</title>
+<style>
+  a {
+    text-decoration: none !important;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  h3 {
+    color: black;
+  }
+
+  h3:hover {
+    color: #9caed9 !important;
+  }
+
+  #card:hover {
+    border: solid black 1px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-color: #000;
+  }
+
+  #content-container {
+    margin-top: -2rem !important;
+  }
+</style>
 
 {% endblock %} {% block body %} {% include 'navbar.html' %}
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="card">
     <div id="title" class="text-center mt-5 border-bottom ms-2">
-      <h2>All Photo</h2>
+      <h2>Album</h2>
     </div>
-    <div class="row p-5 mt-5">
-      {% for item in image %}
+    <div class="row p-5 mt-5" id="content-container">
+      {% for item in album %}
       <div class="col-4">
-        <div class="card mt-5" style="width: 18rem">
-          <img
-            src="{{complete_route}}{{item[0]}}"
-            alt="adasd"
-            class="card-img-top"
-            height="220px"
-            width="100px"
-          />
-          <div class="card-body text-center">
-            <h5 class="card-title">{{item[1]}}</h5>
-
-            <a
-              href="{{url_for('image_manager.detail', image_id=item[2], file_name=item[0])}}"
-              class="btn btn-primary"
-              >Detail</a
-            >
+        <a href="{{url_for('image_manager.detail', album_id=item[0])}}">
+          <div id="card" class="card mt-5" style="width: 18rem; min-height: 18rem">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <div class="text-center">
+                <h3>{{item[1]}}</h3>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
       {% endfor %}
     </div>
     <div class="row">
       <div class="col text-center mb-5">
-        <a href="{{ url_for('image_manager.upload_image') }}" class="text-decoration-none">
-          <button class="btn btn-primary">UPLOAD IMAGE</button></a
+        <a href="{{ url_for('image_manager.album', id=id) }}" class="text-decoration-none">
+          <button class="btn btn-primary">Add New Album</button></a
         >
       </div>
     </div>

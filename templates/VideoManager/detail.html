@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{video_id}}</title>
+{% endblock %}
+{% block body %}
+{% include 'navbar.html' %}
+<div class="container mt-5">
+    <video width="320" height="240" controls>
+        <source src="{{VIDEO_ROUTE}}" type="video/mp4">
+    </video>
+</div>
+{% endblock %}

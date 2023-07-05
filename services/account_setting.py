@@ -10,6 +10,17 @@ def get_total_text_from_user(user_id):
     return total
 
 
+def update_account_setting(id, username, email):
+    db = db_connection()
+    cur = db.cursor()
+    cur.execute(
+        "UPDATE users SET username = ?, email = ? WHERE id = ?", (username, email, id)
+    )
+    db.commit()
+    cur.close()
+    db.close()
+
+
 def get_total_image_from_user(user_id):
     db = db_connection()
     cur = db.cursor()

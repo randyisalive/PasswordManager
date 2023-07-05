@@ -1,24 +1,81 @@
 {% extends 'base.html' %} {% block title %}
 <title>Detail - Password Manager</title>
 
-{% endblock %} {% block body %}
-<div class="container">
-  <div class="card mt-5">
-    <div class="card-body">
-      <div class="text-center mt-5">
-        <img
-          src="/{{file_route}}{{image[1]}}"
-          alt="Image"
-          class="img-fluid rounded"
-          width="800px"
-          height="600px"
-        />
-      </div>
-      <div class="container text-center mt-4">
-        <a href="{{url_for('image_manager.delete')}}" class="btn btn-danger">Delete</a>
+<style>
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  #content-container {
+    height: 100%;
+    align-items: center;
+  }
+
+  #card-outer:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+</style>
+
+{% endblock %} {% block body %} {% include 'navbar.html' %}
+<div class="container mt-5">
+  {% if images %} {% for x in images %}
+
+  <a href="/static/img/users/{{session.get('username').strip().capitalize()}}/{{x[1]}}">
+    <div class="card p-3 mt-3" id="card-outer">
+      <div class="row">
+        <div class="col">
+          <img
+            src="/static/img/users/{{session.get('username').strip().capitalize()}}/{{x[1]}}"
+            alt="image"
+            class="img img-thumbnail"
+            width="100"
+            height="100"
+          />
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center gap-2" id="content-container">
+            <p class="text-center">{{x[4]}}</p>
+
+            <p>{{x[6]}} Bytes</p>
+          </div>
+        </div>
       </div>
     </div>
+  </a>
+
+  {% endfor %}
+  <div class="container w-25 mt-5">
+    <a
+      href="{{url_for('image_manager.upload_image', user_id=session.get('id'), album_id=album_id)}}"
+      class="text-black"
+    >
+      <div class="card">
+        <div class="card-body text-center">
+          <h1>+ Add Photo</h1>
+        </div>
+      </div>
+    </a>
   </div>
+
+  {% else %} No Image Exist
+  <div class="container w-25">
+    <a
+      href="{{url_for('image_manager.select', user_id=session.get('id'), album_id=album_id)}}"
+      class="text-black"
+    >
+      <div class="card">
+        <div class="card-body text-center">
+          <h1>+ Add Photo</h1>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  {% endif %}
 </div>
 
 {% endblock %}
