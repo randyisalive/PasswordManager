@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_debugtoolbar import DebugToolbarExtension
 
 # Import controller module
 from controller.home import *
@@ -20,8 +19,6 @@ app.secret_key = "1"
 app.debug = True
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 
-
-toolbar = DebugToolbarExtension(app)
 
 # App config
 
