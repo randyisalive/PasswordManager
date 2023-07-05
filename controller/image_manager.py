@@ -9,6 +9,7 @@ from flask import (
 from werkzeug.utils import secure_filename
 import os
 from services.image_manager import *
+from services.misc import byteToMB
 
 image_manager = Blueprint("image_manager", __name__)
 

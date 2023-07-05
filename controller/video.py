@@ -6,16 +6,12 @@ from flask import Blueprint, url_for, session, request, redirect, render_templat
 import os
 from werkzeug.utils import secure_filename
 from services.video import *
+from services.misc import byteToMB
 
 video = Blueprint("video", __name__)
 
 TEMPLATE_ROUTE = "/VideoManager/"
 VIDEO_FOLDER = "static/video/"
-
-
-def byteToMB(byte):
-    megabytes = byte / 1024 / 1024
-    return megabytes
 
 
 @video.route("/")
