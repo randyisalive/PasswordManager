@@ -8,7 +8,6 @@ from controller.account import *
 from controller.generator import *
 from controller.image_manager import *
 from controller.text import *
-from controller.video import *
 
 # Import controller module
 
@@ -20,8 +19,6 @@ app = Flask(__name__)
 app.secret_key = "1"
 app.debug = True
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 megabytes
-
 
 
 toolbar = DebugToolbarExtension(app)
@@ -35,7 +32,7 @@ app.register_blueprint(account, url_prefix="/")
 app.register_blueprint(generator, url_prefix="/")
 app.register_blueprint(image_manager, url_prefix="/")
 app.register_blueprint(text, url_prefix="/textbin")
-app.register_blueprint(video, url_prefix='/video')
+
 
 if __name__ == "__main__":
     app.run()
