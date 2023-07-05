@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_debugtoolbar import DebugToolbarExtension
 
 # Import controller module
 from controller.home import *
@@ -13,6 +14,8 @@ from controller.text import *
 # App config
 
 app = Flask(__name__)
+
+toolbar = DebugToolbarExtension(app)
 
 
 app.secret_key = "1"
